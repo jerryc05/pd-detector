@@ -1,0 +1,51 @@
+apply plugin: "com.android.application"
+apply plugin: "kotlin-android"
+
+android {
+    compileSdkVersion "android-R"
+    defaultConfig {
+        applicationId "io.jerryc05.pd_detector"
+        minSdkVersion 24
+        targetSdkVersion 29
+        versionCode 1
+        versionName "0.1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        resConfigs "xxhdpi", "en", "zh-rCN"
+    }
+    buildTypes {
+        release {
+            zipAlignEnabled true
+            shrinkResources true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+        }
+        debug {
+            debuggable true
+            applicationIdSuffix ".dbg"
+            versionNameSuffix ".dbg"
+        }
+    }
+    buildFeatures.viewBinding = true
+    splits.abi {
+        enable true
+        reset()
+        include "arm64-v8a", "x86_64"
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8
+}
+
+dependencies {
+//    implementation fileTree(dir: "libs", include: ["*.jar"])
+//    implementation "androidx.appcompat:appcompat:1.1.0"
+    implementation "androidx.constraintlayout:constraintlayout:1.1.3"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.61"
+
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:2.2"
+    testImplementation "junit:junit:4.13"
+    androidTestImplementation "androidx.test.ext:junit:1.1.1"
+    androidTestImplementation "androidx.test.espresso:espresso-core:3.2.0"
+}
