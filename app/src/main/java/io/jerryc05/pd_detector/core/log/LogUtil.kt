@@ -6,7 +6,7 @@ import android.app.AlertDialog
 import android.content.DialogInterface
 import android.util.Log
 import io.jerryc05.pd_detector.BuildConfig
-import io.jerryc05.pd_detector.ui.MyApp.Companion.weakActivity
+import io.jerryc05.pd_detector.ui.MyApp.Companion.topActivity
 
 
 internal fun logA(tag: String, msg: String?, tr: Throwable? = null) {
@@ -40,7 +40,7 @@ internal fun logE(tag: String, msg: String?, tr: Throwable? = null) {
     }
   }
 
-  weakActivity.get()?.let {
+  topActivity.get()?.let {
     AlertDialog.Builder(it)
             .setTitle("Error!")
             .setMessage(errMsg)

@@ -1,5 +1,3 @@
-@file:Suppress("unused")
-
 package io.jerryc05.pd_detector.ui
 
 import android.app.Activity
@@ -9,7 +7,7 @@ import java.lang.ref.WeakReference
 
 class MyApp : Application(), Application.ActivityLifecycleCallbacks {
   companion object {
-    lateinit var weakActivity: WeakReference<Activity>
+    lateinit var topActivity: WeakReference<Activity>
   }
 
   override fun onCreate() {
@@ -18,7 +16,7 @@ class MyApp : Application(), Application.ActivityLifecycleCallbacks {
   }
 
   override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
-    weakActivity = WeakReference(activity)
+    topActivity = WeakReference(activity)
   }
 
   override fun onActivityStarted(activity: Activity) {
@@ -37,5 +35,6 @@ class MyApp : Application(), Application.ActivityLifecycleCallbacks {
   }
 
   override fun onActivityDestroyed(activity: Activity) {
+    topActivity.clear()
   }
 }
