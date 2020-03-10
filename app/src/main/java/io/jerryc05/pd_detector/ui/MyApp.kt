@@ -8,7 +8,9 @@ import android.os.Bundle
 import java.lang.ref.WeakReference
 
 class MyApp : Application(), Application.ActivityLifecycleCallbacks {
-  lateinit var weakActivity: WeakReference<Activity>
+  companion object {
+    lateinit var weakActivity: WeakReference<Activity>
+  }
 
   override fun onCreate() {
     super.onCreate()
